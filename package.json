@@ -5,13 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start-client": "npx parcel-bundler ./client/src/index.html -p 3001"
+    "start-client": "npx parcel-bundler ./client/src/index.html -p 3001",
+    "start-server": "node ./server/index.js"
   },
   "author": "quoctrungdh",
   "license": "ISC",
   "devDependencies": {
     "@types/react": "^16.9.19",
     "@types/react-dom": "^16.9.5",
+    "express": "^4.17.1",
     "parcel-bundler": "^1.12.4",
     "typescript": "^3.7.5"
   },
