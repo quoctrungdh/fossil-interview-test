@@ -5,10 +5,10 @@ import Footer from "../components/Footer";
 
 export default function MainLayout(props) {
     return (
-        <main>
+        <div className="flex flex-col min-h-screen">
             <Header />
-            {props.children}
+            <main>{props.children}</main>
             <Footer />
-        </main>
+        </div>
     )
 }
