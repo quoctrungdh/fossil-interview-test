@@ -10,6 +10,8 @@ import Home from "./pages/Home";
 import Order from "./pages/Order";
 import FourOFour from "./pages/404";
 
+import "./styles/global.css";
+
 export default function App() {
     return (
         <Router>

@@ -5,22 +5,29 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start-client": "npx parcel-bundler ./client/src/index.html -p 3001",
-    "start-server": "node ./server/index.js"
+    "start-server": "node ./server/index.js",
+    "start": "webpack-dev-server --config ./client/webpack.config.js"
   },
   "author": "quoctrungdh",
   "license": "ISC",
   "devDependencies": {
     "@types/react": "^16.9.19",
     "@types/react-dom": "^16.9.5",
-    "express": "^4.17.1",
-    "parcel-bundler": "^1.12.4",
-    "tailwindcss": "^1.1.4",
-    "typescript": "^3.7.5"
-  },
-  "dependencies": {
     "@types/node": "^13.7.0",
     "@types/react-router-dom": "^5.1.3",
+    "css-loader": "^3.4.2",
+    "express": "^4.17.1",
+    "file-loader": "^5.0.2",
+    "postcss-loader": "^3.0.0",
+    "style-loader": "^1.1.3",
+    "tailwindcss": "^1.1.4",
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.7.5",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.10.3"
+  },
+  "dependencies": {
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-router-dom": "^5.1.2"

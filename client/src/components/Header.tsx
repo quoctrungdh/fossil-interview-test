@@ -1,7 +1,7 @@
 import * as React from "react";
 import { NavLink } from "react-router-dom";
 
-const MainLogo = require("../assets/main-logo.png");
+const MainLogo =  require("../assets/main-logo.png");
 
 export default function Header() {
     const itemClassname = "mr-8";
