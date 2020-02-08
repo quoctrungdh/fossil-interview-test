@@ -5,6 +5,9 @@ import {
     Switch,
     Route
 } from "react-router-dom";
+import { Provider } from "react-redux";
+
+import { store } from "./store";
 
 import Home from "./pages/Home";
 import Order from "./pages/Order";
@@ -31,6 +34,8 @@ export default function App() {
 }
 
 ReactDom.render(
-    <App />,
+    <Provider store={store}>
+        <App />
+    </Provider>,
     document.getElementById("root")
 )

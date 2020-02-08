@@ -8,6 +8,7 @@ module.exports = {
     },
     devServer: {
         inline: true,
+        historyApiFallback: true,
         contentBase: path.resolve(__dirname, "dist"),
         port: 3001
     },

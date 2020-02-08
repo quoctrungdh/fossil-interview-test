@@ -11,10 +11,12 @@
   "author": "quoctrungdh",
   "license": "ISC",
   "devDependencies": {
+    "@types/node": "^13.7.0",
     "@types/react": "^16.9.19",
     "@types/react-dom": "^16.9.5",
-    "@types/node": "^13.7.0",
+    "@types/react-redux": "^7.1.7",
     "@types/react-router-dom": "^5.1.3",
+    "cors": "^2.8.5",
     "css-loader": "^3.4.2",
     "express": "^4.17.1",
     "file-loader": "^5.0.2",
@@ -30,6 +32,9 @@
   "dependencies": {
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-router-dom": "^5.1.2"
+    "react-redux": "^7.1.3",
+    "react-router-dom": "^5.1.2",
+    "redux": "^4.0.5",
+    "redux-saga": "^1.1.3"
   }
 }
