@@ -1,3 +1,5 @@
+import { URL } from "url";
+
 interface IHttpService {
     get: (endpoint: string, params: Object) => Promise<Object>
 }
@@ -11,8 +13,13 @@ class HttpService implements IHttpService {
         this.baseUrl = baseUrl;
     }
 
-    get = (endpoint: string, params: Object) => {
-        return fetch(this.baseUrl + endpoint, params)
+    private objectToQueryString(obj: any) {
+        return Object.keys(obj).map(key => key + '=' + obj[key]).join('&');
+    }
+
+    get = (endpoint: string, query: Object) => {
+        const url = this.baseUrl + endpoint + `?${this.objectToQueryString(query)}`
+        return fetch(url)
             .then(res => res.json());
     }
 }

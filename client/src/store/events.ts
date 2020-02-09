@@ -1,4 +1,5 @@
 export default {
-    orderViewMounted: "orderViewMounted",
-    fetchOrdersSuccess: "fetchOrdersSuccess"
+    fetchOrdersRequest: "fetchOrdersRequest",
+    fetchOrdersSuccess: "fetchOrdersSuccess",
+    filterChanged: "filterChange"
 }

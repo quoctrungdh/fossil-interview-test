@@ -1,3 +1,7 @@
+export interface IAppState {
+    orderState: IOrderState;
+}
+
 export interface IOrderState {
     orders: [];
     totalOrders: number;

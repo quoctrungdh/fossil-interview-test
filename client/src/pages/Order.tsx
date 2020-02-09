@@ -1,30 +1,65 @@
 import * as React from "react";
 import { connect } from "react-redux";
 
-import { IOrderState } from "../store/stateModels";
+import { IAppState, IOrderState } from "../store/stateModels";
 
 import MainLayout from "../layouts/Main";
-import OrdersManagement from "../layouts/Orders";
+import OrderFilter from "../layouts/OrdersFilter";
+import OrdersList from "../layouts/OrdersList";
 
 import AppEvents from "../store/events";
 
-type OrderProps = IOrderState & { dispatch: Function; }
+type OrderProps =  {
+    orderState: IOrderState;
+    dispatch: Function;
+}
 
 class Order extends React.Component <OrderProps, {}> {
     componentDidMount() {
         this.props.dispatch({
-            type: AppEvents.orderViewMounted
+            type: AppEvents.fetchOrdersRequest
+        })
+    }
+
+    componentDidUpdate(prevProps: OrderProps) {
+        if (this.props.orderState.currentCategoryFilter !== prevProps.orderState.currentCategoryFilter) {
+            this.props.dispatch({
+                type: AppEvents.fetchOrdersRequest
+            })
+        }
+    }
+
+    onChangeFilter = (filter: string) => () => {
+        this.props.dispatch({
+            type: AppEvents.filterChanged,
+            payload: { filter }
         })
     }
 
     render() {
-        console.log(this.props)
+        const { orderState } = this.props;
         return (
             <MainLayout>
-                <OrdersManagement />
+                <div className="text-center">
+                    <h2>List of order</h2>
+                    <p>Orders information &amp; payment</p>
+                </div>
+                <div className="flex">
+                    <div className="w-1/3">
+                        <OrderFilter
+                            changeFilter={this.onChangeFilter}
+                            activeFilter={orderState.currentCategoryFilter}
+                        />
+                    </div>
+                    <div className="w-2/3">
+                        <OrdersList orderState={orderState} />
+                    </div>
+                </div>
             </MainLayout>
         )
     }
 }
 
-export default connect((state: IOrderState) => state)(Order);
+export default connect((state: IAppState) => ({
+    orderState: state.orderState
+}))(Order);
