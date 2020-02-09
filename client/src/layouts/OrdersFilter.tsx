@@ -17,10 +17,16 @@ interface OrderFilterProps {
 
 export default function OrdersFilter(props: OrderFilterProps) {
     return (
-        <ul>
+        <ul className="inline-block mt-6 text-sm uppercase font-medium">
             {orderStates.map((orderState) => {
-                const activeClass = props.activeFilter === orderState ? "underline" : "cursor-pointer";
-                return <li onClick={props.changeFilter(orderState)} className={activeClass}>{orderState}</li>
+                const activeClass = props.activeFilter === orderState ? "bg-primary-darkest text-white" : "cursor-pointer";
+                return <li
+                    key={orderState}
+                    onClick={props.changeFilter(orderState)}
+                    className={`py-2 px-20 border-b border-primary-lighter ${activeClass}`}
+                >
+                    {orderState}
+                </li>
             })}
         </ul>
     )

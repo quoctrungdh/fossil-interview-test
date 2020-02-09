@@ -39,19 +39,26 @@ class Order extends React.Component <OrderProps, {}> {
     render() {
         const { orderState } = this.props;
         return (
-            <MainLayout>
-                <div className="text-center">
-                    <h2>List of order</h2>
-                    <p>Orders information &amp; payment</p>
+            <MainLayout className="flex-1 flex flex-col">
+                <div className="text-center p-6">
+                    <h2 className="text-4xl font-medium leading-none">List of order</h2>
+                    <p className="font-light">Orders information &amp; payment</p>
                 </div>
-                <div className="flex">
-                    <div className="w-1/3">
+                <div className="border-t border-b border-primary-lightest">
+                    <p className="wrapper mx-auto p-2 text-sm text-light">
+                        <button>
+                        &lt; back
+                        </button>
+                    </p>
+                </div>
+                <div className="flex items-stretch flex-1">
+                    <div className="w-1/4 xl:w-1/3 bg-primary-lightest text-right">
                         <OrderFilter
                             changeFilter={this.onChangeFilter}
                             activeFilter={orderState.currentCategoryFilter}
                         />
                     </div>
-                    <div className="w-2/3">
+                    <div className="w-3/4 xl:w-2/3 max-w-4xl">
                         <OrdersList orderState={orderState} />
                     </div>
                 </div>

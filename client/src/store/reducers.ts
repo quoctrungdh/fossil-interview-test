@@ -12,7 +12,7 @@ const initialState: IOrderState = {
     totalOrdersPerCategory: 0,
     currentCategoryFilter: OrderState.confirm,
     totalPages: 0,
-    currentPage: 0,
+    currentPage: 1,
     ordersPerPage: 10
 }
 
