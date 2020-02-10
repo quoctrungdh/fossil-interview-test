@@ -1,16 +1,12 @@
 const path = require("path");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
     entry: "./client/src/index.tsx",
     output: {
         path: path.resolve(__dirname, "dist"),
-        filename: "bundle.js"
-    },
-    devServer: {
-        inline: true,
-        historyApiFallback: true,
-        contentBase: path.resolve(__dirname, "dist"),
-        port: 3001
+        filename: '[name].[contenthash].js',
     },
     resolve: {
         extensions: [".ts", ".tsx", ".js"]
@@ -30,5 +26,12 @@ module.exports = {
                 }
             ] }
         ]
-    }
+    },
+    plugins: [
+        new CleanWebpackPlugin(),
+        new HtmlWebpackPlugin({
+            title: "FossilVN test",
+            template: "client/index.html"
+        })
+    ]
 }
