@@ -13,7 +13,7 @@ const OrderService = {
             page: page,
             per_page: offset,
             total_pages: Math.ceil(orderByType.length / offset),
-            data: orderByType.slice((page - 1) * offset, offset),
+            data: orderByType.slice((page - 1) * offset, page * offset),
         }
     }
 }

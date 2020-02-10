@@ -4,8 +4,10 @@ import { connect } from "react-redux";
 import { IAppState, IOrderState } from "../store/stateModels";
 
 import MainLayout from "../layouts/Main";
-import OrderFilter from "../layouts/OrdersFilter";
-import OrdersList from "../layouts/OrdersList";
+
+import OrderFilter from "../components/OrdersFilter";
+import OrdersList from "../components/OrdersList";
+import Paginator from "../components/Paginator";
 
 import AppEvents from "../store/events";
 
@@ -27,6 +29,12 @@ class Order extends React.Component <OrderProps, {}> {
                 type: AppEvents.fetchOrdersRequest
             })
         }
+
+        if (this.props.orderState.currentPage !== prevProps.orderState.currentPage) {
+            this.props.dispatch({
+                type: AppEvents.fetchOrdersRequest
+            })
+        }
     }
 
     onChangeFilter = (filter: string) => () => {
@@ -36,8 +44,17 @@ class Order extends React.Component <OrderProps, {}> {
         })
     }
 
+    onChangePage = (page: number) => () => {
+        this.props.dispatch({
+            type: AppEvents.pageChanged,
+            payload: { page }
+        })
+    }
+
     render() {
         const { orderState } = this.props;
+        const { orders, ...paginateInfo } = orderState;
+
         return (
             <MainLayout className="flex-1 flex flex-col">
                 <div className="text-center p-6">
@@ -58,8 +75,12 @@ class Order extends React.Component <OrderProps, {}> {
                             activeFilter={orderState.currentCategoryFilter}
                         />
                     </div>
-                    <div className="w-3/4 xl:w-2/3 max-w-4xl">
+                    <div className="w-3/4 xl:w-2/3 max-w-4xl p-4">
                         <OrdersList orderState={orderState} />
+                        <Paginator
+                            paginateInfo={paginateInfo}
+                            changePage={this.onChangePage}
+                        />
                     </div>
                 </div>
             </MainLayout>

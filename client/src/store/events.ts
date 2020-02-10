@@ -1,5 +1,6 @@
 export default {
     fetchOrdersRequest: "fetchOrdersRequest",
     fetchOrdersSuccess: "fetchOrdersSuccess",
-    filterChanged: "filterChange"
+    filterChanged: "filterChange",
+    pageChanged: "pageChange"
 }

@@ -26,7 +26,7 @@ export function ordersReducer(state: IOrderState = initialState, event: IReduxEv
                 ...state,
                 orders: payload.data,
                 totalPages: payload.total_pages,
-                currentPage: payload.page,
+                currentPage: parseInt(payload.page, 10),
                 totalOrdersPerCategory: payload.total_by_type,
                 totalOrders: payload.total,
                 ordersPerPage: payload.per_pages
@@ -37,7 +37,17 @@ export function ordersReducer(state: IOrderState = initialState, event: IReduxEv
 
             return {
                 ...state,
+                currentPage: initialState.currentPage,
                 currentCategoryFilter: payload.filter
+            }
+
+
+        case AppEvents.pageChanged:
+            payload = event.payload as { page: number };
+
+            return {
+                ...state,
+                currentPage: payload.page,
             }
 
         default:

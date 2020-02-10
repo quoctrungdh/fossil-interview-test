@@ -6,7 +6,7 @@ export interface IReduxEvent {
 export interface OrderDTO {
     data: [];
     total_pages: number;
-    page: number;
+    page: string;
     total: number;
     total_by_type: number;
     per_pages: number;
