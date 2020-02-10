@@ -27,7 +27,8 @@ export function ordersReducer(state: IOrderState = initialState, event: IReduxEv
                 orders: payload.data,
                 totalPages: payload.total_pages,
                 currentPage: payload.page,
-                totalOrdersPerCategory: payload.total,
+                totalOrdersPerCategory: payload.total_by_type,
+                totalOrders: payload.total,
                 ordersPerPage: payload.per_pages
             }
 

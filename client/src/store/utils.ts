@@ -8,5 +8,6 @@ export interface OrderDTO {
     total_pages: number;
     page: number;
     total: number;
+    total_by_type: number;
     per_pages: number;
 }
