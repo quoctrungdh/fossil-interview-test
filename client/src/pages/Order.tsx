@@ -1,5 +1,6 @@
 import * as React from "react";
 import { connect } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 import { IAppState, IOrderState } from "../store/stateModels";
 
@@ -14,6 +15,15 @@ import AppEvents from "../store/events";
 type OrderProps =  {
     orderState: IOrderState;
     dispatch: Function;
+}
+
+function BackButton() {
+    const history = useHistory();
+    return (
+        <button onClick={history.goBack}>
+            <i className="mr-1 icon ion-ios-arrow-back"></i> back
+        </button>
+    )
 }
 
 class Order extends React.Component <OrderProps, {}> {
@@ -63,9 +73,7 @@ class Order extends React.Component <OrderProps, {}> {
                 </div>
                 <div className="border-t border-b border-primary-lightest">
                     <p className="wrapper mx-auto p-2 text-sm text-light">
-                        <button>
-                        &lt; back
-                        </button>
+                    <BackButton />
                     </p>
                 </div>
                 <div className="flex items-stretch flex-1">
@@ -75,7 +83,7 @@ class Order extends React.Component <OrderProps, {}> {
                             activeFilter={orderState.currentCategoryFilter}
                         />
                     </div>
-                    <div className="w-3/4 xl:w-2/3 max-w-4xl p-4">
+                    <div className="mb-8 w-3/4 xl:w-2/3 max-w-4xl p-4">
                         <OrdersList orderState={orderState} />
                         <Paginator
                             paginateInfo={paginateInfo}

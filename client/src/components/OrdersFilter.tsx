@@ -23,7 +23,7 @@ export default function OrdersFilter(props: OrderFilterProps) {
                 return <li
                     key={orderState}
                     onClick={props.changeFilter(orderState)}
-                    className={`py-2 px-20 border-b border-primary-lighter ${activeClass}`}
+                    className={`py-2 px-10 lg:px-20 border-b border-primary-lighter ${activeClass}`}
                 >
                     {orderState}
                 </li>
